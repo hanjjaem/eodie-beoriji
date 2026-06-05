@@ -320,7 +320,9 @@ h1 span{
 .modal{
   width:min(100%, 760px);
   max-height:min(88vh, 820px);
-  overflow:auto;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;            /* keep the rounded frame crisp; inner body scrolls */
   background:rgba(255,255,255,.95);
   border:1px solid rgba(255,255,255,.8);
   border-radius:32px;
@@ -330,6 +332,7 @@ h1 span{
 }
 @keyframes pop{from{opacity:0;transform:translateY(10px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
 .modal-head{
+  flex:0 0 auto;              /* stays pinned at the top while body scrolls */
   padding:24px 28px 10px;
   display:flex;
   justify-content:space-between;
@@ -348,7 +351,24 @@ h1 span{
   font-size:22px;
   line-height:1;
 }
-.modal-body{padding:0 28px 28px}
+.modal-body{
+  flex:1 1 auto;
+  min-height:0;              /* allow the flex child to actually shrink & scroll */
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  padding:0 22px 28px 28px;  /* trimmed right padding leaves room for the scrollbar gutter */
+  scrollbar-width:thin;
+  scrollbar-color:rgba(100,116,139,.38) transparent;
+}
+.modal-body::-webkit-scrollbar{width:8px}
+.modal-body::-webkit-scrollbar-track{background:transparent;margin:6px 0}
+.modal-body::-webkit-scrollbar-thumb{
+  background:rgba(100,116,139,.32);
+  border-radius:999px;
+  border:2px solid transparent;
+  background-clip:padding-box;
+}
+.modal-body::-webkit-scrollbar-thumb:hover{background:rgba(100,116,139,.5);background-clip:padding-box}
 .result-card{
   border:1px solid rgba(16,35,63,.08);
   background:#fff;
@@ -497,7 +517,7 @@ h1 span{
   .modal{border-radius:28px}
   .modal-title{font-size:15px}
   .modal-head{padding:20px 20px 8px}
-  .modal-body{padding:0 20px 20px}
+  .modal-body{padding:0 15px 20px 20px}
   .result-card{padding:12px;border-radius:24px}
   .result-hero{grid-template-columns:1fr;gap:16px;text-align:center;padding:24px 20px;min-height:0}
   .result-icon{width:92px;height:92px;border-radius:28px;font-size:42px;margin:0 auto}
