@@ -1,0 +1,16 @@
+# Original monolithic source (now split into index.html / styles.css / data.js / app.js)
+어디에버리지.html
+
+# Claude Code local settings
+.claude/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Dependencies / build output (none currently, but reserved)
+node_modules/
+dist/

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>어디에 버리지? — 부산 동구 생활배출 가이드</title>
+<meta name="description" content="부산 동구 생활쓰레기 분류 가이드. 품목명을 입력하면 음식물·일반·별도처리 중 어디에 버리는지, 왜 그런지, 어떻게 버리는지 알려드립니다. 한국어·English·中文·Tiếng Việt 지원." />
+<meta name="theme-color" content="#2563eb" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="어디에 버리지? — 부산 동구 생활배출 가이드" />
+<meta property="og:description" content="품목명으로 분리배출 방법을 즉시 확인하세요. 4개 언어 지원." />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="app app-minimal">
+  <header class="top">
+    <div class="brand"><div class="brand-mark">D</div><span>Dong-gu Waste Guide</span></div>
+    <nav class="langs" id="lr" aria-label="언어 선택"></nav>
+  </header>
+
+  <main class="main main-minimal">
+    <div class="kicker" id="kicker">부산 동구 생활배출 가이드</div>
+    <h1><span>어디에</span> 버리지?</h1>
+    <p class="sub">품목명을 입력해 바로 확인하세요.</p>
+
+    <section class="search-card" aria-label="품목 검색">
+      <div class="search-row">
+        <input id="q" type="text" autocomplete="off" placeholder="예: 달걀껍데기, 수박, 생선뼈" />
+        <button id="sb" type="button" onclick="go()">확인하기</button>
+      </div>
+    </section>
+
+    <div class="examples" id="ch" aria-label="예시 검색어"></div>
+
+    <div class="visually-hidden-for-js" aria-hidden="true">
+      <section class="criteria" id="criteria" aria-label="핵심 분류 기준">
+        <div class="criteria-item"><strong id="critFoodTitle">음식물</strong><span id="critFoodDesc">처리시설에서 재활용 가능한 음식 잔재물</span></div>
+        <div class="criteria-item"><strong id="critGeneralTitle">일반</strong><span id="critGeneralDesc">뼈·껍질·씨앗처럼 처리에 부적합한 것</span></div>
+        <div class="criteria-item"><strong id="critSpecialTitle">별도처리</strong><span id="critSpecialDesc">기름처럼 흡수·수거가 필요한 것</span></div>
+      </section>
+
+      <div class="helper">
+        <span id="helperEnter">↵ 엔터로 바로 확인</span>
+        <span id="helperReason">● 분류 이유 제공</span>
+        <span id="helperSteps">● 배출 방법 안내</span>
+      </div>
+    </div>
+  </main>
+
+  <footer class="contact-section compact-contact" id="contactSection" aria-label="동별 수거담당 업체 연락처">
+    <div class="contact-title">
+      <span id="contactTitle">미수거 문의</span>
+      <small id="contactSubtitle">수거되지 않았다면 담당 업체로 문의하세요.</small>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="area" id="contactAreaA">초량1·2·3·6동 · 수정1·2·4동</div>
+        <a class="phone" href="tel:051-636-5633">051-636-5633</a>
+      </div>
+      <div class="contact-item">
+        <div class="area" id="contactAreaB">수정5동 · 좌천동 · 범일1·2·5동</div>
+        <a class="phone" href="tel:051-631-0933">051-631-0933</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <div class="modal-head">
+      <div class="modal-title" id="modalTitle"></div>
+      <button class="close" type="button" onclick="closeModal()" aria-label="닫기">×</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
